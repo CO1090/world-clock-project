@@ -21,6 +21,20 @@ function updateTime() {
 
     tokyoTimeElement.innerHTML = moment.tz("Asia/Tokyo").format("HH:mm:ss");
   }
+
+  let newYorkElement = document.querySelector("#new-york");
+
+  if (newYorkElement) {
+    let newYorkDateElement = newYorkElement.querySelector(".date");
+    let newYorkTimeElement = newYorkElement.querySelector(".time");
+    newYorkDateElement.innerHTML = moment
+      .tz("America/New_York")
+      .format("dddd MMMM Do YYYY");
+
+    newYorkTimeElement.innerHTML = moment
+      .tz("America/New_York")
+      .format("HH:mm:ss");
+  }
 }
 updateTime();
 setInterval(updateTime, 1000);
