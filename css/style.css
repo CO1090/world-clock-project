@@ -58,14 +58,19 @@ hr {
   );
 }
 
-a {
+.git-link {
   text-decoration: none;
   color: #0ed6ed;
   transition: all 150ms ease-in-out;
 }
 
-a:hover {
+.git-link:hover {
   opacity: 0.5;
+}
+
+.title {
+  text-decoration: none;
+  color: #ffffff;
 }
 
 footer {
