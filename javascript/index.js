@@ -26,22 +26,24 @@ updateTime();
 setInterval(updateTime, 1000);
 
 function updateCity(event) {
-  if (event.target.value.length > 0) {
-    let cityTimeZone = event.target.value;
-    let cityName = cityTimeZone.replace("_", " ").split("/")[1];
-    let cityTime = moment.tz(cityTimeZone);
-    let citiesElement = document.querySelector("#cities");
-
-    citiesHTML = `<div class="city">
-        <div>
-        <h2>${cityName}</h2>
-        <div class="date">${cityTime.format("dddd MMMM Do YYYY")}</div>
-        </div>
-        <div class="time">${cityTime.format("HH:mm")}</div>
-        </div>`;
-
-    citiesElement.innerHTML = citiesHTML;
+  let cityTimeZone = event.target.value;
+  if (cityTimeZone === "current") {
+    cityTimeZone = moment.tz.guess();
   }
+
+  let cityName = cityTimeZone.replace("_", " ").split("/")[1];
+  let cityTime = moment.tz(cityTimeZone);
+  let citiesElement = document.querySelector("#cities");
+
+  citiesHTML = `<div class="city">
+    <div>
+    <h2>${cityName}</h2>
+    <div class="date">${cityTime.format("dddd MMMM Do YYYY")}</div>
+    </div>
+    <div class="time">${cityTime.format("HH:mm")}</div>
+    </div>`;
+
+  citiesElement.innerHTML = citiesHTML;
 }
 
 let citiesSelectElement = document.querySelector("#city");
